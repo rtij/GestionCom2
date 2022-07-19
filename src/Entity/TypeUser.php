@@ -24,9 +24,26 @@ class TypeUser
     /**
      * @var string|null
      *
-     * @ORM\Column(name="libellÃ©", type="string", length=50, nullable=true)
+     * @ORM\Column(name="libelle", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
-    private $libellã© = '';
+    private $libelle = 'NULL';
+
+    public function getIdtypeUser(): ?string
+    {
+        return $this->idtypeUser;
+    }
+
+    public function getLibelle(): ?string
+    {
+        return $this->libelle;
+    }
+
+    public function setLibelle(?string $libelle): self
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
 
 
 }

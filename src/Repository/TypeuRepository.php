@@ -7,10 +7,10 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Article|null find($id, $lockMode = null, $lockVersion = null)
- * @method Article|null findOneBy(array $criteria, array $orderBy = null)
- * @method Article[]    findAll()
- * @method Article[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Typeu|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Typeu|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Typeu[]    findAll()
+ * @method Typeu[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class TypeuRepository extends ServiceEntityRepository
 {
@@ -20,7 +20,7 @@ class TypeuRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Article[] Returns an array of Article objects
+    //  * @return Typeu[] Returns an array of Typeu objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class TypeuRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Article
+    public function findOneBySomeField($value): ?Typeu
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

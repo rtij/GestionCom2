@@ -3,7 +3,7 @@
 namespace App\Entity\Customer;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * Typeu
  *
@@ -15,6 +15,7 @@ class Typeu
     /**
      * @var int
      *
+     * @Groups("post:read")
      * @ORM\Column(name="idTypeu", type="integer", nullable=false, options={"unsigned"=true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -24,6 +25,7 @@ class Typeu
     /**
      * @var string
      *
+     * @Groups("post:read")
      * @ORM\Column(name="designation", type="string", length=255, nullable=false)
      */
     private $designation;

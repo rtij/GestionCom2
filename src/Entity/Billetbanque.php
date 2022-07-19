@@ -22,11 +22,28 @@ class Billetbanque
     private $idbilletbanque;
 
     /**
-     * @var string|null
+     * @var float|null
      *
-     * @ORM\Column(name="LIBELLE", type="decimal", precision=24, scale=6, nullable=true, options={"default"="0.000000"})
+     * @ORM\Column(name="LIBELLE", type="decimal", precision=24, scale=3, nullable=true, options={"default"="0.000"})
      */
-    private $libelle = '0.000000';
+    private $libelle = 0.000;
+
+    public function getIdbilletbanque(): ?int
+    {
+        return $this->idbilletbanque;
+    }
+
+    public function getLibelle(): ?string
+    {
+        return $this->libelle;
+    }
+
+    public function setLibelle(?string $libelle): self
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
 
 
 }

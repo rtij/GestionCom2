@@ -79,7 +79,9 @@ class GestuserAuthenticators extends AbstractGuardAuthenticator
          if(!$connection instanceof MultiDbConnectionWrapper) {
              throw new \RuntimeException('Wrong connection');
          }
-        $connection->selectDatabase('gestuser');
+         
+         $connection->selectDatabase('Gestuser');
+        //  $connection->selectDatabase('Gestuser','Gestuser', 'RTJ020399!');
         $jetons = $request->headers->get("X-Auth-Token");
         $hash =  hash('sha256',$jetons);
         if(!$hash){
@@ -135,7 +137,7 @@ class GestuserAuthenticators extends AbstractGuardAuthenticator
     public function checkCredentials($credentials, UserInterface $user)
     {
         $now = new DateTime("now");
-        $intervale = $now->diff($credentials->getCreatedat());
+        $intervale = $now->diff($credentials->getDatet());
         $days = $intervale->days; 
         if($days>0){ 
             throw new AuthenticationException("Credentials expired",400);
@@ -146,7 +148,9 @@ class GestuserAuthenticators extends AbstractGuardAuthenticator
          if(!$connection instanceof MultiDbConnectionWrapper) {
              throw new \RuntimeException('Wrong connection');
          }
-         $connection->selectDatabase('gestuser');
+         
+         $connection->selectDatabase('Gestuser');
+        //  $connection->selectDatabase('Gestuser','Gestuser', 'RTJ020399!');
         
         return true;
     }

@@ -3,11 +3,12 @@
 namespace App\Entity\Customer;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Info
  *
- * @ORM\Table(name="info", uniqueConstraints={@ORM\UniqueConstraint(name="cif", columns={"cif"}), @ORM\UniqueConstraint(name="stat", columns={"stat"}), @ORM\UniqueConstraint(name="rcs", columns={"rcs"}), @ORM\UniqueConstraint(name="nif", columns={"nif"})})
+ * @ORM\Table(name="info", uniqueConstraints={@ORM\UniqueConstraint(name="stat", columns={"stat"}), @ORM\UniqueConstraint(name="nif", columns={"nif"}), @ORM\UniqueConstraint(name="cif", columns={"cif"}), @ORM\UniqueConstraint(name="rcs", columns={"rcs"})})
  * @ORM\Entity
  */
 class Info
@@ -15,6 +16,7 @@ class Info
     /**
      * @var int
      *
+     * @Groups("post:read")
      * @ORM\Column(name="idInfo", type="integer", nullable=false, options={"unsigned"=true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -24,30 +26,34 @@ class Info
     /**
      * @var string|null
      *
-     * @ORM\Column(name="nif", type="string", length=20, nullable=true)
+     * @Groups("post:read")
+     * @ORM\Column(name="nif", type="string", length=20, nullable=true, options={"default"="NULL"})
      */
-    private $nif;
+    private $nif = 'NULL';
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="cif", type="string", length=20, nullable=true)
+     * @Groups("post:read")
+     * @ORM\Column(name="cif", type="string", length=20, nullable=true, options={"default"="NULL"})
      */
-    private $cif;
+    private $cif = 'NULL';
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="rcs", type="string", length=20, nullable=true)
+     * @Groups("post:read")
+     * @ORM\Column(name="rcs", type="string", length=20, nullable=true, options={"default"="NULL"})
      */
-    private $rcs;
+    private $rcs = 'NULL';
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="stat", type="string", length=20, nullable=true)
+     * @Groups("post:read")
+     * @ORM\Column(name="stat", type="string", length=20, nullable=true, options={"default"="NULL"})
      */
-    private $stat;
+    private $stat = 'NULL';
 
     public function getIdinfo(): ?int
     {

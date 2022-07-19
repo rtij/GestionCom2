@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Utilisateur
  *
- * @ORM\Table(name="utilisateur", uniqueConstraints={@ORM\UniqueConstraint(name="Nom", columns={"Nom"})}, indexes={@ORM\Index(name="WDIDX164492065715", columns={"IDtype_user"})})
+ * @ORM\Table(name="utilisateur", uniqueConstraints={@ORM\UniqueConstraint(name="Nom", columns={"Nom"})}, indexes={@ORM\Index(name="IDtype_user", columns={"IDtype_user"})})
  * @ORM\Entity
  */
 class Utilisateur
@@ -24,37 +24,105 @@ class Utilisateur
     /**
      * @var string|null
      *
-     * @ORM\Column(name="Nom", type="string", length=50, nullable=true)
+     * @ORM\Column(name="Nom", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
-    private $nom = '';
+    private $nom = 'NULL';
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="Motdepasse", type="string", length=50, nullable=true)
+     * @ORM\Column(name="Motdepasse", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
-    private $motdepasse = '';
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="IDtype_user", type="bigint", nullable=true)
-     */
-    private $idtypeUser = '0';
+    private $motdepasse = 'NULL';
 
     /**
      * @var bool|null
      *
      * @ORM\Column(name="Superviseur", type="boolean", nullable=true)
      */
-    private $superviseur = '0';
+    private $superviseur = false;
 
     /**
      * @var bool|null
      *
      * @ORM\Column(name="MotdepasseÃ saisir", type="boolean", nullable=true)
      */
-    private $motdepasseã saisir = '0';
+    private $motdepasseï¿½saisir = false;
+
+    /**
+     * @var \TypeUser
+     *
+     * @ORM\ManyToOne(targetEntity="TypeUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDtype_user", referencedColumnName="IDtype_user")
+     * })
+     */
+    private $idtypeUser;
+
+    public function getIdutilisateur(): ?int
+    {
+        return $this->idutilisateur;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(?string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getMotdepasse(): ?string
+    {
+        return $this->motdepasse;
+    }
+
+    public function setMotdepasse(?string $motdepasse): self
+    {
+        $this->motdepasse = $motdepasse;
+
+        return $this;
+    }
+
+    public function getSuperviseur(): ?bool
+    {
+        return $this->superviseur;
+    }
+
+    public function setSuperviseur(?bool $superviseur): self
+    {
+        $this->superviseur = $superviseur;
+
+        return $this;
+    }
+
+    public function getMotdepasseï¿½saisir(): ?bool
+    {
+        return $this->motdepasseï¿½saisir;
+    }
+
+    public function setMotdepasseï¿½saisir(?bool $motdepasseï¿½saisir): self
+    {
+        $this->motdepasseï¿½saisir = $motdepasseï¿½saisir;
+
+        return $this;
+    }
+
+    public function getIdtypeUser(): ?TypeUser
+    {
+        return $this->idtypeUser;
+    }
+
+    public function setIdtypeUser(?TypeUser $idtypeUser): self
+    {
+        $this->idtypeUser = $idtypeUser;
+
+        return $this;
+    }
 
 
 }

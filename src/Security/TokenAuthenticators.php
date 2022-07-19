@@ -44,6 +44,7 @@ class TokenAuthenticators extends AbstractGuardAuthenticator
     {
         if (!$request->headers->get("X-Auth-Token")) {
             throw new BadCredentialsException("X-Auth-Token required");
+            return false;
         } else {
             return true;
         }
@@ -79,7 +80,9 @@ class TokenAuthenticators extends AbstractGuardAuthenticator
          if(!$connection instanceof MultiDbConnectionWrapper) {
              throw new \RuntimeException('Wrong connection');
          }
-        $connection->selectDatabase('gestuser');
+         
+         $connection->selectDatabase('Gestuser');
+        //  $connection->selectDatabase('Gestuser','Gestuser', 'RTJ020399!');
         $jetons = $request->headers->get("X-Auth-Token");
         $hash =  hash('sha256',$jetons);
         if(!$hash){
@@ -135,24 +138,26 @@ class TokenAuthenticators extends AbstractGuardAuthenticator
     public function checkCredentials($credentials, UserInterface $user)
     {
         $now = new DateTime("now");
-        $intervale = $now->diff($credentials->getCreatedat());
+        $intervale = $now->diff($credentials->getDatet());
         $days = $intervale->days; 
         if($days>0){ 
-            throw new AuthenticationException("Credentials expired",400);
+            throw new AuthenticationException("bad request",400);
         }
        
         //Set database User
         $User = $credentials->getIduser();
         $groupe = $User->getIdgroup();
-        $db_name = $groupe->getNameg();
+        if($groupe){
+            $db_name = $groupe->getNameg();
         
-        $connection = $this->em->getConnection();
-         // set database
-         if(!$connection instanceof MultiDbConnectionWrapper) {
-             throw new \RuntimeException('Wrong connection');
-         }
-         $connection->selectDatabase($db_name);
-        
+            $connection = $this->em->getConnection();
+             // set database
+             if(!$connection instanceof MultiDbConnectionWrapper) {
+                 throw new \RuntimeException('Wrong connection');
+             }
+             $connection->selectDatabase(md5($db_name));
+            
+        }
         return true;
     }
     /**

@@ -24,9 +24,26 @@ class Password
     /**
      * @var string|null
      *
-     * @ORM\Column(name="Motdepasse", type="string", length=50, nullable=true)
+     * @ORM\Column(name="Motdepasse", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
-    private $motdepasse = '';
+    private $motdepasse = 'NULL';
+
+    public function getIdpassword(): ?int
+    {
+        return $this->idpassword;
+    }
+
+    public function getMotdepasse(): ?string
+    {
+        return $this->motdepasse;
+    }
+
+    public function setMotdepasse(?string $motdepasse): self
+    {
+        $this->motdepasse = $motdepasse;
+
+        return $this;
+    }
 
 
 }

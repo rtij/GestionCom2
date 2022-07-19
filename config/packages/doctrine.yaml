@@ -17,15 +17,6 @@ doctrine:
     orm:
         default_entity_manager: default
         entity_managers:
-            default:
-                connection: default
-                mappings:
-                    App:
-                        is_bundle: false
-                        type: annotation
-                        dir: '%kernel.project_dir%/src/Entity'
-                        prefix: 'App\Entity'
-                        alias: App
             customer:
                 connection: Custom
                 mappings:
@@ -35,6 +26,16 @@ doctrine:
                         dir: '%kernel.project_dir%/src/Entity/Customer'
                         prefix: 'App\Entity\Customer'
                         alias: Customer
+            default:
+                connection: default
+                mappings:
+                    App:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity'
+                        prefix: 'App\Entity'
+                        alias: Main
+            
 
 when@test:
     doctrine:

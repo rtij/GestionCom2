@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Cloturecaisse
  *
- * @ORM\Table(name="cloturecaisse", indexes={@ORM\Index(name="WDIDX164492067839", columns={"IDutilisateur"}), @ORM\Index(name="WDIDX164492067738", columns={"DATE"})})
+ * @ORM\Table(name="cloturecaisse", indexes={@ORM\Index(name="DATE", columns={"DATE"}), @ORM\Index(name="IDutilisateur", columns={"IDutilisateur"})})
  * @ORM\Entity
  */
 class Cloturecaisse
@@ -24,16 +24,48 @@ class Cloturecaisse
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="DATE", type="date", nullable=true)
+     * @ORM\Column(name="DATE", type="date", nullable=true, options={"default"="NULL"})
      */
     private $date;
 
     /**
-     * @var int|null
+     * @var \Utilisateur
      *
-     * @ORM\Column(name="IDutilisateur", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Utilisateur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="IDutilisateur", referencedColumnName="IDutilisateur")
+     * })
      */
-    private $idutilisateur = '0';
+    private $idutilisateur;
+
+    public function getIdcloturecaisse(): ?int
+    {
+        return $this->idcloturecaisse;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getIdutilisateur(): ?Utilisateur
+    {
+        return $this->idutilisateur;
+    }
+
+    public function setIdutilisateur(?Utilisateur $idutilisateur): self
+    {
+        $this->idutilisateur = $idutilisateur;
+
+        return $this;
+    }
 
 
 }

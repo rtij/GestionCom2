@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Famille
  *
- * @ORM\Table(name="famille", indexes={@ORM\Index(name="WDIDX164492065512", columns={"AFFICHER"}), @ORM\Index(name="WDIDX164492065411", columns={"LIBELLE"})})
+ * @ORM\Table(name="famille", indexes={@ORM\Index(name="LIBELLE", columns={"LIBELLE"}), @ORM\Index(name="AFFICHER", columns={"AFFICHER"})})
  * @ORM\Entity
  */
 class Famille
@@ -24,16 +24,45 @@ class Famille
     /**
      * @var string|null
      *
-     * @ORM\Column(name="LIBELLE", type="string", length=20, nullable=true)
+     * @ORM\Column(name="LIBELLE", type="string", length=20, nullable=true, options={"default"="NULL"})
      */
-    private $libelle = '';
+    private $libelle = 'NULL';
 
     /**
      * @var bool|null
      *
      * @ORM\Column(name="AFFICHER", type="boolean", nullable=true)
      */
-    private $afficher = '0';
+    private $afficher = true;
+
+    public function getIdfamille(): ?int
+    {
+        return $this->idfamille;
+    }
+
+    public function getLibelle(): ?string
+    {
+        return $this->libelle;
+    }
+
+    public function setLibelle(?string $libelle): self
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    public function getAfficher(): ?bool
+    {
+        return $this->afficher;
+    }
+
+    public function setAfficher(?bool $afficher): self
+    {
+        $this->afficher = $afficher;
+
+        return $this;
+    }
 
 
 }

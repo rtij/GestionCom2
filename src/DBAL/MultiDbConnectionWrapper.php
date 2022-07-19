@@ -22,6 +22,20 @@
 
             $params = $this->getParams();
             $params['dbname'] = $DbName;
+            // $params['user'] = $username;
+            // $params["password"]= $password;
             parent::__construct($params, $this->_driver, $this->_config ,$this->_eventManager);
         }
+
+        // public function selectDatabase(string $DbName, ?string $username, ?string $password): void{
+        //     if($this->isConnected()){
+        //         $this->close();
+        //     }
+
+        //     $params = $this->getParams();
+        //     $params['dbname'] = $DbName;
+        //     $params['user'] = $username;
+        //     $params["password"]= $password;
+        //     parent::__construct($params, $this->_driver, $this->_config ,$this->_eventManager);
+        // }
     }

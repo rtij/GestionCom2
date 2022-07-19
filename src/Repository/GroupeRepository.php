@@ -19,6 +19,11 @@ class GroupeRepository extends ServiceEntityRepository
         parent::__construct($registry, Groupe::class);
     }
 
+    public function findLast(){
+        $sql = "SELECT Max(i.idgroup) from Customer:Groupe i";
+        return $this->getEntityManager('customer')->createQuery($sql)
+            ->getOneOrNullResult();
+    }
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */

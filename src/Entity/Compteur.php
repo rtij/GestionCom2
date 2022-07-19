@@ -98,5 +98,142 @@ class Compteur
      */
     private $numbc = '0';
 
+    public function getIdcompteur(): ?int
+    {
+        return $this->idcompteur;
+    }
+
+    public function getNumclient(): ?int
+    {
+        return $this->numclient;
+    }
+
+    public function setNumclient(?int $numclient): self
+    {
+        $this->numclient = $numclient;
+
+        return $this;
+    }
+
+    public function getNumfrns(): ?int
+    {
+        return $this->numfrns;
+    }
+
+    public function setNumfrns(?int $numfrns): self
+    {
+        $this->numfrns = $numfrns;
+
+        return $this;
+    }
+
+    public function getNumbl(): ?int
+    {
+        return $this->numbl;
+    }
+
+    public function setNumbl(?int $numbl): self
+    {
+        $this->numbl = $numbl;
+
+        return $this;
+    }
+
+    public function getNumnoteachat(): ?int
+    {
+        return $this->numnoteachat;
+    }
+
+    public function setNumnoteachat(?int $numnoteachat): self
+    {
+        $this->numnoteachat = $numnoteachat;
+
+        return $this;
+    }
+
+    public function getNumfactavectva(): ?int
+    {
+        return $this->numfactavectva;
+    }
+
+    public function setNumfactavectva(?int $numfactavectva): self
+    {
+        $this->numfactavectva = $numfactavectva;
+
+        return $this;
+    }
+
+    public function getNumfactsantva(): ?int
+    {
+        return $this->numfactsantva;
+    }
+
+    public function setNumfactsantva(?int $numfactsantva): self
+    {
+        $this->numfactsantva = $numfactsantva;
+
+        return $this;
+    }
+
+    public function getNumrecu(): ?int
+    {
+        return $this->numrecu;
+    }
+
+    public function setNumrecu(?int $numrecu): self
+    {
+        $this->numrecu = $numrecu;
+
+        return $this;
+    }
+
+    public function getNumvente(): ?int
+    {
+        return $this->numvente;
+    }
+
+    public function setNumvente(?int $numvente): self
+    {
+        $this->numvente = $numvente;
+
+        return $this;
+    }
+
+    public function getNumproforma(): ?int
+    {
+        return $this->numproforma;
+    }
+
+    public function setNumproforma(?int $numproforma): self
+    {
+        $this->numproforma = $numproforma;
+
+        return $this;
+    }
+
+    public function getNumticket(): ?int
+    {
+        return $this->numticket;
+    }
+
+    public function setNumticket(?int $numticket): self
+    {
+        $this->numticket = $numticket;
+
+        return $this;
+    }
+
+    public function getNumbc(): ?int
+    {
+        return $this->numbc;
+    }
+
+    public function setNumbc(?int $numbc): self
+    {
+        $this->numbc = $numbc;
+
+        return $this;
+    }
+
 
 }
